@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 public class MyAndroidAppActivity extends Activity {
 
 
-//fount script on: http://stackoverflow.com/questions/11777676/how-can-i-get-my-dynamic-ip-address-of-my-android-device
+//found script on: http://stackoverflow.com/questions/11777676/how-can-i-get-my-dynamic-ip-address-of-my-android-device
 
   Button button;
 
@@ -21,7 +21,8 @@ public class MyAndroidAppActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        Button b=(Button)findViewById(R.id.btn1);
+        Button b=(Button)findViewById(R.id.button1);
+        TextField t=(TextField)findViewById(R.id.ip_address);
 
         b.setOnClickListener(new View.OnClickListener() {
 
@@ -34,6 +35,8 @@ public class MyAndroidAppActivity extends Activity {
                         if (!inetAddress.isLoopbackAddress()) {
                             return inetAddress.getHostAddress().toString();
                         }
+
+                        t.setText(inetAddress.getHostAddress().toString())
                     }
                 }
             }catch (SocketException ex) {
