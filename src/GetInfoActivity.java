@@ -2,18 +2,18 @@ package com.GetInfo;
 
 import java.net.InetAddress;
 import android.app.Activity;
-
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.widget.Button;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
 
-public class MyAndroidAppActivity extends Activity {
+public class GetInfoActivity extends Activity {
 
-
+    private Button b;
 //found script on: http://stackoverflow.com/questions/11777676/how-can-i-get-my-dynamic-ip-address-of-my-android-device
-
-  Button button;
 
   @Override
     public void onCreate(Bundle savedInstanceState)
@@ -21,12 +21,19 @@ public class MyAndroidAppActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        Button b=(Button)findViewById(R.id.button1);
-        TextField t=(TextField)findViewById(R.id.ip_address);
+        b=(Button)findViewById(R.id.button1);
+
 
         b.setOnClickListener(new View.OnClickListener() {
 
-                 public static String getLocalIpAddressString() {
+
+        public void onClick(View v) {
+
+        Builder builder = new AlertDialog.Builder(DialogsActivity.this);
+        AlertDialog dialog = builder.create();
+        dialog.setTitle("Your device info:");
+
+        public static String getLocalIpAddressString() {
             try {
                 for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
                     NetworkInterface intf = en.nextElement();
@@ -35,8 +42,6 @@ public class MyAndroidAppActivity extends Activity {
                         if (!inetAddress.isLoopbackAddress()) {
                             return inetAddress.getHostAddress().toString();
                         }
-
-                        t.setText(inetAddress.getHostAddress().toString())
                     }
                 }
             }catch (SocketException ex) {
@@ -44,7 +49,24 @@ public class MyAndroidAppActivity extends Activity {
 
             return null;
         }
+
+// http://stackoverflow.com/questions/3394765/how-to-check-available-space-on-android-device-on-mini-sd-card
+
+        public static long getAvailableSpaceInMB(){
+            final long SIZE_KB = 1024L;
+            final long SIZE_MB = SIZE_KB * SIZE_KB;
+            long availableSpace = -1L;
+            StatFs stat = new StatFs(Environment.getExternalStorageDirectory().getPath());
+            availableSpace = (long) stat.getAvailableBlocks() * (long) stat.getBlockSize();
+            return availableSpace/SIZE_MB;
+        }
+                // dialog.setMessage("You cannout use this app unless you accept.");
+
+    dialog.show();
+}
+
+
         });
     }
 
-  }
+
