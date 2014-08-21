@@ -4,7 +4,7 @@
     <string name="app_name">Maven Quickstart</string>
     <string name="hello">Hello my-android-application!</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_sweet">Hello sweetie!</string>
+    <string name="hello_sweetie">Hello sweetie!</string>
     <string name="push">Push to see IP!</string>
 
     <string name="ip_hint">IP will go here</string>
