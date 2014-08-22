@@ -3,10 +3,10 @@ maven-android-app
 
 Building and research process:
 
-1) Downloaded and installed android-sdk and Eclipse.
-2) Got to Hello World with eclipse emulator: learned about logcat and a little about ant.
-3) Download and installed maven, and updated plugins
-4) Opened new maven project: 
+1. Downloaded and installed android-sdk and Eclipse.
+2. Got to Hello World with eclipse emulator: learned about logcat and a little about ant.
+3. Download and installed maven, and updated plugins
+4. Opened new maven project: 
 
  mvn archetype:generate \
   -DarchetypeArtifactId=android-quickstart \
@@ -15,10 +15,10 @@ Building and research process:
   -DgroupId=your.company \
   -DartifactId=my-android-application
   
-5) Make sure android plugin in POM is correct latest version (mvn versions:display-plugin-updates)
-6) Gave up on Eclipse emulator (need to switch to Android Studio, also research Android Emulator GPU futher!)
-7) Got to Hello World with only java.
-8) Some trouble shooting with Maven errors and google gets "mvn package" to build!
+5. Make sure android plugin in POM is correct latest version (mvn versions:display-plugin-updates)
+6. Gave up on Eclipse emulator (need to switch to Android Studio, also research Android Emulator GPU futher!)
+7. Got to Hello World with only java.
+8. Some trouble shooting with Maven errors and google gets "mvn package" to build!
   
 To compile and run (from project directory): 
 
