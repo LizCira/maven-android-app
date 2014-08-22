@@ -22,9 +22,9 @@ Building and research process:
   
 To compile and run (from project directory): 
 
-mvn package
-android avd (launch emulator of your choice)
-adb uninstall your.company
-adb install target/my-android-application.apk
+`mvn package`
+`android avd (launch emulator of your choice)`
+`adb uninstall your.company`
+`adb install target/my-android-application.apk`
 
 Note: "adb logcat" to troubleshoo emulator and make sure it's not crashed, which it likely has.
