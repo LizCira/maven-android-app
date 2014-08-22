@@ -16,7 +16,7 @@ public class GetInfoActivity extends Activity {
 //found script on: http://stackoverflow.com/questions/11777676/how-can-i-get-my-dynamic-ip-address-of-my-android-device
 
   @Override
-    public void onCreate(Bundle savedInstanceState)
+  public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -27,13 +27,13 @@ public class GetInfoActivity extends Activity {
         b.setOnClickListener(new View.OnClickListener() {
 
 
-        public void onClick(View v) {
+        void onClick(View v) {
 
         Builder builder = new AlertDialog.Builder(DialogsActivity.this);
         AlertDialog dialog = builder.create();
         dialog.setTitle("Your device info:");
 
-        public static String getLocalIpAddressString() {
+         getLocalIpAddressString();{
             try {
                 for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
                     NetworkInterface intf = en.nextElement();
@@ -52,7 +52,7 @@ public class GetInfoActivity extends Activity {
 
 // http://stackoverflow.com/questions/3394765/how-to-check-available-space-on-android-device-on-mini-sd-card
 
-        public static long getAvailableSpaceInMB(){
+        getAvailableSpaceInMB();{
             final long SIZE_KB = 1024L;
             final long SIZE_MB = SIZE_KB * SIZE_KB;
             long availableSpace = -1L;
@@ -67,6 +67,7 @@ public class GetInfoActivity extends Activity {
 
 
         });
-    }
+}
+}
 
 
