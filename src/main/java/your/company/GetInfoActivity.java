@@ -16,6 +16,8 @@ import android.app.AlertDialog;
 import android.widget.Toast;
 import android.app.Dialog;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 
 
 public class GetInfoActivity extends Activity {
@@ -37,12 +39,13 @@ public class GetInfoActivity extends Activity {
                 long space = getAvailableSpaceInMB();
                 String theSpace = "The space available is: " + space;
                 String theIP = getLocalIpAddressString();
+                String theVersion = getVersionInfo();
 
                 AlertDialog.Builder builder = new
                 AlertDialog.Builder(GetInfoActivity.this);
                 AlertDialog dialog = builder.create();
                 dialog.setTitle("The Title");
-                dialog.setMessage(theSpace +"available space \n" +"The IP" + theIP);
+                dialog.setMessage(theSpace +"available space \n" +"The IP" + theIP + " Version: " + theVersion);
                 dialog.show();
             }
         });
@@ -59,7 +62,7 @@ public class GetInfoActivity extends Activity {
     }
 
 
-//found script on: http://stackoverflow.com/questions/11777676/how-can-i-get-my-dynamic-ip-address-of-my-android-device
+//found on: http://stackoverflow.com/questions/11777676/how-can-i-get-my-dynamic-ip-address-of-my-android-device
 
     public static String getLocalIpAddressString() {
         try {
@@ -77,6 +80,22 @@ public class GetInfoActivity extends Activity {
 
         return null;
     }
+
+// found on: http://stackoverflow.com/questions/13766803/display-version-name
+    public String getVersionInfo() {
+        String strVersion = "Version:";
+        PackageInfo packageInfo;
+        try {
+            packageInfo = getApplicationContext().getPackageManager().getPackageInfo(
+                    getApplicationContext().getPackageName(), 0);
+            strVersion += packageInfo.versionName;
+        } catch (NameNotFoundException e) {
+            strVersion += "Unknown";
+        }
+
+        return strVersion;
+    }
+
 }
 
 
